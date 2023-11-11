@@ -12,10 +12,13 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  TabList,
   Text,
   useDisclosure,
   useToast,
   VStack,
+  Tabs,
+  Tab,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -48,10 +51,23 @@ const Navbar = () => {
       <Link to="/">
         <Flex align="center" mr={5} cursor="pointer">
           <Text fontSize="xl" fontWeight="bold">
-            My Website
+            BooksHub
           </Text>
         </Flex>
       </Link>
+      <Tabs variant='soft-rounded' colorScheme='yellow' align='center'>
+        <TabList> 
+          <Tab><Link to="/">Home</Link></Tab>
+          <Tab><Link to="/books">List Books</Link></Tab>
+          <Tab>
+            {isLogin ? (
+              <Link to="/newbook">Add Book</Link>
+            ) : (
+              <Link to="/newbook" onClick={onOpen}>Add Book</Link>
+            )}
+          </Tab>
+        </TabList>
+      </Tabs>
       <HStack>
         {isLogin && (
           <Link to="/newbook">
@@ -59,8 +75,9 @@ const Navbar = () => {
           </Link>
         )}
         {!isLogin ? (
-          <Button onClick={onOpen} colorScheme="blue">
-            Login
+          <Button onClick={onOpen} colorScheme="blue"
+          _hover={{ bg: "orange.300" }}>
+            <Flex align="center" mr={1} cursor="pointer">LOGIN</Flex>
           </Button>
         ) : (
           <Button
