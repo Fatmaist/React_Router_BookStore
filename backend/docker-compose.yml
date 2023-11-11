@@ -7,6 +7,6 @@ services:
     restart: always
     environment:
       POSTGRES_PASSWORD: fat12
-      POSTGRES_DB: book
+      POSTGRES_DB: Book
     ports:
       - "5432:5432"
