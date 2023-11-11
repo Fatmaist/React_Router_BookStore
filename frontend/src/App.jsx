@@ -7,6 +7,7 @@ import Homepage from "./pages/Homepage";
 import NewBookPage from "./pages/NewBooks";
 import Register from "./pages/Register";
 import PrivateRoute from "../src/components/PrivateRoute";
+import ListBooks from "./pages/ListBooks";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path={"/"} element={<Homepage />} />
+          <Route path={"/books"} element={<ListBooks />} />
           <Route path={"/register"} element={<Register />} />
           <Route path={"/newbook"} element={
             <PrivateRoute>
